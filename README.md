@@ -2,6 +2,25 @@
 
 Login → Register → Dashboard → QR Scan → **Dynamic device UI** (based on what's inside the QR code).
 
+## What's new in this update
+
+1. **Dashboard redesign** — Home now matches the light "Hello, {name}" layout: greeting + bell icon,
+   a blue "Scan & Get Your App Here" banner, and a "My Apps" list with icon, ID, and a live
+   Connected/Offline indicator. A new bottom tab bar (Home / Scanner / My Profile) replaces the old
+   single dashboard screen, and a matching **Profile** tab was added (avatar, user details, settings list).
+2. **Professional Login/Register screens** — new dark header + white card layout, icon-prefixed inputs,
+   a show/hide password toggle, and placeholder text is now solid black as requested.
+3. **Converted to TypeScript** — every file is now `.ts`/`.tsx` (`App.tsx`, all `screens/`, `components/`,
+   `context/AuthContext.tsx`, plus a new `navigation/MainTabs.tsx` and `types/index.ts` with shared
+   `Device`, `User`, and navigation param types). `tsconfig.json` and the `typescript`/`@types/react`
+   dev dependencies were added; `npm run type-check` runs `tsc --noEmit` with zero errors.
+4. **Links always stay inside the app** — pasted/scanned URLs open in the in-app `WebViewScreen`
+   (never the phone's external browser). The WebView now also blocks any non-http(s) navigation and
+   any attempt by a page to spawn a new browser window/tab (`onShouldStartLoadWithRequest`,
+   `setSupportMultipleWindows={false}`, `javaScriptCanOpenWindowsAutomatically={false}`), so every link
+   tapped from inside a loaded page stays in the same in-app view too.
+
+
 ## Setup (Expo)
 
 ```bash
